@@ -4,13 +4,13 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('cloudy.consoleHome.views',
     # Example:
     # (r'^cloudy/', include('cloudy.foo.urls')),
-    (r'^$', 'cloudy.consoleHome.views.index'),
-    (r'^home/', include('cloudy.consoleHome.urls')),
+    (r'^$', 'index'),
+    (r'^node_list', 'node_list'),
 
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
+    # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

@@ -5,6 +5,10 @@ from libcloud.types import Provider
 from libcloud.providers import get_driver,DRIVERS
 
 def index(request):
+    return render_to_response( 'consoleHome/index.html' )
+
+
+def node_list(request):
     nodes = []
     accounts = Credential.objects.all()
 
@@ -18,6 +22,6 @@ def index(request):
          except:
              pass
 
+    return render_to_response( 'consoleHome/node_list.html', {'nodes': nodes,} )
 
-    return render_to_response( 'consoleHome/index.html', {'nodes': nodes,} )
 
