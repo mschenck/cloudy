@@ -2,7 +2,10 @@ from django.db import models
 from libcloud.providers import DRIVERS
 
 class Credential(models.Model):
-    services = DRIVERS.values()
+    services = []
+    
+    for driver in DRIVERS:
+        services.append( (driver, DRIVERS[driver][1]) )
 
     service_provider = models.CharField(max_length=200, choices=services)
     api_id = models.CharField(max_length=200)
