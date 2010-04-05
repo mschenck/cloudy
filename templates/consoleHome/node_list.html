@@ -2,6 +2,16 @@
 <h1>Node list</h1>
 
 <p>
-{{ message }}
+Service Providers
+{% for provider in providers %}
+<h3>{{ provider }}</h3>
+{% endfor %}
+</p>
+
+<p>
+Nodes
+{% for node in nodes %}
+<h3>{{ node }}</h3>
+{% endfor %}
 </p>
 

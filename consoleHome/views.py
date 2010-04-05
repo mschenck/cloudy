@@ -10,18 +10,23 @@ def index(request):
 
 def node_list(request):
     nodes = []
+    providers = []
     accounts = Credential.objects.all()
 
     for account in accounts:
          provider = account.service_provider
          Driver = get_driver(provider)
 
-         try:
-             conn = Driver(account.api_id, account.api_secret)
-             nodes[provider] = conn.list_nodes()
-         except:
-             pass
+         id = account.api_id
+         secret = account.api_secret
 
-    return render_to_response( 'consoleHome/node_list.html', {'nodes': nodes,} )
+         conn = Driver(account.api_id, account.api_secret)
+         nodes[provider] = conn.list_nodes()
+         providers.append(provider)
+
+    return render_to_response( 'consoleHome/node_list.html', {
+        'nodes': nodes,
+        'providers': providers,
+    } )
 
 

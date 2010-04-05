@@ -7,7 +7,7 @@ class Credential(models.Model):
     for driver in DRIVERS:
         services.append( (driver, DRIVERS[driver][1]) )
 
-    service_provider = models.CharField(max_length=200, choices=services)
+    service_provider = models.IntegerField(choices=services)
     api_id = models.CharField(max_length=200)
     api_secret = models.CharField(max_length=200,blank=True)
 
